@@ -20,7 +20,7 @@ public class AdminController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<String> adminGet(@AuthenticationPrincipal UserDetails userDetails) {
         return ResponseEntity.ok(
-                MessageFormat.format("Method called by admin {0}. Role is {1}.", userDetails.getUsername(),
+                MessageFormat.format("Method called by user: {0}. Role is: {1}", userDetails.getUsername(),
                         userDetails.getAuthorities().stream()
                                 .map(GrantedAuthority::getAuthority)
                                 .collect(Collectors.joining(",")))
